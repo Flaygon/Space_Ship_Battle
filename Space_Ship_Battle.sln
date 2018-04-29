@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space_Ship_Battle", "Space_Ship_Battle.csproj", "{A334CE18-C2A2-D070-FA24-BC6873433810}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space_Ship_Battle.Editor", "Space_Ship_Battle.Editor.csproj", "{0BFC0069-0318-622F-7A39-D0F36CCF2962}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A334CE18-C2A2-D070-FA24-BC6873433810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A334CE18-C2A2-D070-FA24-BC6873433810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A334CE18-C2A2-D070-FA24-BC6873433810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A334CE18-C2A2-D070-FA24-BC6873433810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BFC0069-0318-622F-7A39-D0F36CCF2962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BFC0069-0318-622F-7A39-D0F36CCF2962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BFC0069-0318-622F-7A39-D0F36CCF2962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BFC0069-0318-622F-7A39-D0F36CCF2962}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
