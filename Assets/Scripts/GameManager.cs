@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour {
     public Ship playerShipAsset;
 
     public Enemy enemyAsset;
-    private List<Enemy> enemies = new List<Enemy>();
+    [HideInInspector]
+    public List<Enemy> enemies = new List<Enemy>();
 
     public List<Ship> shipAssets;
 
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour {
     public int worldTilesX = 10;
     public int worldTilesY = 10;
 
+    public GameObject reticule;
+
     void Start ()
     {
         //Cursor.lockState = CursorLockMode.Locked;
@@ -30,7 +33,7 @@ public class GameManager : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
             GenerateLevel();
     }
 
@@ -78,6 +81,10 @@ public class GameManager : MonoBehaviour {
         {
             player.ship = Instantiate(playerShipAsset, Vector3.zero, Quaternion.identity);
             player.ship.invincible = true;
+            player.ship.GetComponent<AimingController>().enabled = true;
+            player.ship.GetComponent<AimingController>().player = player;
+            player.ship.GetComponent<AimingController>().reticule = reticule;
+            player.ship.player = player;
         }
         player.ship.transform.position = Vector3.zero;
 

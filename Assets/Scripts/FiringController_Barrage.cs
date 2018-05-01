@@ -8,6 +8,10 @@ public class FiringController_Barrage : FiringController {
 
     private bool firing;
 
+    public override void Fire(Transform cannonMouth, Projectile projectileAsset)
+    {
+    }
+
     public override void Fire(List<Transform> cannonMouths, Projectile projectileAsset)
     {
         if (firing)
@@ -29,10 +33,10 @@ public class FiringController_Barrage : FiringController {
         {
             FireProjectile(iMouth, projectileAsset);
 
+            currentReloadtime = 0.0f;
+
             yield return new WaitForSeconds(timeUntilNextFire);
         }
-
-        currentReloadtime = 0.0f;
 
         firing = false;
     }

@@ -37,14 +37,7 @@ public class Player : MonoBehaviour {
 
         if(ship.info.continuousFire && Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
         {
-            if(Vector3.Dot(ship.transform.right, Camera.main.transform.forward) >= 0)
-            {
-                ship.FireRightBroadside();
-            }
-            else
-            {
-                ship.FireLeftBroadside();
-            }
+            ship.Fire();
         }
     }
 }

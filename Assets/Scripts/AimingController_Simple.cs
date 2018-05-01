@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class AimingController_Simple : AimingController
 {
+
+    private void Start()
+    {
+        reticule.SetActive(true);
+    }
+
     private void Update()
     {
-        Vector3 mouseDelta = Input.mousePosition - lastMousePosition;
+        float deltaX = Input.GetAxis("Mouse X");
+        float deltaY = Input.GetAxis("Mouse Y");
+        Vector3 mouseDelta = new Vector3(deltaX, deltaY, 0.0f);
         if (mouseDelta.magnitude >= 0.1)
         {
             mouseMovement += mouseDelta;
-            transform.Rotate((yUpIsUp ? mouseDelta.y : -mouseDelta.y) * mouseSensitivity, mouseDelta.x * mouseSensitivity, 0.0f, Space.Self);
+            player.transform.Rotate((yUpIsUp ? mouseDelta.y : -mouseDelta.y) * mouseSensitivity, mouseDelta.x * mouseSensitivity, 0.0f, Space.Self);
 
             mouseMovement.y = Mathf.Clamp(mouseMovement.y, -90.0f, 90.0f);
-            lastMousePosition = Input.mousePosition;
         }
 
         HandleTilt();
@@ -23,8 +30,8 @@ public class AimingController_Simple : AimingController
     {
         if (player.ship.info.autoTilt || Input.GetMouseButton(1))
         {
-            float upCheck = Vector3.Dot(Camera.main.transform.forward, player.ship.transform.up);
-            float rightCheck = Vector3.Dot(Camera.main.transform.forward, player.ship.transform.right);
+            float upCheck = Vector3.Dot(Camera.main.transform.forward, transform.up);
+            float rightCheck = Vector3.Dot(Camera.main.transform.forward, transform.right);
             if (upCheck > 0.001)
             {
                 if (rightCheck > 0.001)
@@ -63,7 +70,7 @@ public class AimingController_Simple : AimingController
 
     private void LateUpdate()
     {
-        Camera.main.transform.position = player.ship.transform.position;
+        Camera.main.transform.position = transform.position;
         Camera.main.transform.rotation = Quaternion.identity;
         Camera.main.transform.Rotate(5.0f - mouseMovement.y, mouseMovement.x, 0.0f, Space.Self);
         Camera.main.transform.position -= Camera.main.transform.forward * cameraDistance;

@@ -2,11 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship_Interceptor : Ship {
+public class Ship_DroneCarrier : Ship {
+
+    public DroneManager_Offensive offensiveDrones;
+    public DroneManager_Defensive defensiveDrones;
 
     protected override void Update()
     {
         base.Update();
+
+        if (Input.GetMouseButton(defensiveDrones.mouseButton))
+        {
+            defensiveDrones.Defend(Camera.main.transform.forward);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            offensiveDrones.SetTarget(null);
+        }
+        else if (Input.GetMouseButtonDown(offensiveDrones.mouseButton))
+        {
+            Transform target = GetComponent<AimingController_Lockon>().target;
+            if (target)
+            {
+                offensiveDrones.SetTarget(target);
+            }
+        }
     }
 
     public override void SpeedUp()
@@ -51,23 +75,13 @@ public class Ship_Interceptor : Ship {
 
     public override void Fire()
     {
-        if (Vector3.Dot(transform.right, Camera.main.transform.forward) >= 0)
-        {
-            FireRightBroadside();
-        }
-        else
-        {
-            FireLeftBroadside();
-        }
     }
 
     public override void FireLeftBroadside()
     {
-        firingController.Fire(leftCannonMouths, projectileAsset);
     }
 
     public override void FireRightBroadside()
     {
-        firingController.Fire(rightCannonMouths, projectileAsset);
     }
 }

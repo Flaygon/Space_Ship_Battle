@@ -10,8 +10,7 @@ public abstract class Ship : MonoBehaviour {
     public Projectile projectileAsset;
 
     public float velocityPerSecond;
-    [HideInInspector]
-    public float velocity;
+    protected float velocity;
     public float maxVelocity;
 
     public float rotationPerSecond;
@@ -25,6 +24,8 @@ public abstract class Ship : MonoBehaviour {
     public FiringController firingController;
 
     public ShipInfo info;
+
+    public Player player;
 
     protected virtual void Update()
     {
@@ -40,15 +41,9 @@ public abstract class Ship : MonoBehaviour {
     public abstract void TiltForward();
     public abstract void TiltBackward();
 
-    public void FireLeftBroadside()
-    {
-        firingController.Fire(leftCannonMouths, projectileAsset);
-    }
-
-    public void FireRightBroadside()
-    {
-        firingController.Fire(rightCannonMouths, projectileAsset);
-    }
+    public abstract void Fire();
+    public abstract void FireLeftBroadside();
+    public abstract void FireRightBroadside();
 
     public void Damage(int damage)
     {

@@ -15,11 +15,11 @@ public class AimingController_Sniper : AimingController
 
     public float snipeMouseSensitivity = 0.1f;
 
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
-
         Camera.main.fieldOfView = fovOriginal;
+
+        reticule.SetActive(false);
     }
 
     private void Update()
@@ -28,9 +28,11 @@ public class AimingController_Sniper : AimingController
 
         if(sniping && lastSniping != sniping)
         {
-            snipingRight = Vector3.Dot(Camera.main.transform.forward, player.ship.transform.right) >= 0;
+            snipingRight = Vector3.Dot(Camera.main.transform.forward, transform.right) >= 0;
 
             Camera.main.fieldOfView = fovZoom;
+
+            reticule.SetActive(true);
         }
         else if(!sniping && lastSniping != sniping)
         {
@@ -38,22 +40,26 @@ public class AimingController_Sniper : AimingController
 
             if(snipingRight)
             {
-                mouseMovement.x = player.ship.transform.eulerAngles.y + 90;
+                mouseMovement.x = transform.eulerAngles.y + 90;
             }
             else
             {
-                mouseMovement.x = player.ship.transform.eulerAngles.y - 90;
+                mouseMovement.x = transform.eulerAngles.y - 90;
             }
-            mouseMovement.y = player.ship.transform.eulerAngles.z;
+            mouseMovement.y = transform.eulerAngles.z;
             // Transform wrapping around quirk
             if(mouseMovement.y > 90)
             {
                 mouseMovement.y -= 360;
             }
+
+            reticule.SetActive(false);
         }
 
-        Vector3 mouseDelta = Input.mousePosition - lastMousePosition;
-        if(mouseDelta.magnitude >= 0.1)
+        float deltaX = Input.GetAxis("Mouse X");
+        float deltaY = Input.GetAxis("Mouse Y");
+        Vector3 mouseDelta = new Vector3(deltaX, deltaY, 0.0f);
+        if (mouseDelta.magnitude >= 0.1)
         {
             mouseMovement += mouseDelta;
             if (sniping)
@@ -65,16 +71,15 @@ public class AimingController_Sniper : AimingController
                     yDelta = -yDelta;
                 }
 
-                player.ship.transform.Rotate(0.0f, mouseDelta.x * mouseSensitivity * snipeMouseSensitivity, yDelta * mouseSensitivity * snipeMouseSensitivity, Space.Self);
+                transform.Rotate(0.0f, mouseDelta.x * mouseSensitivity * snipeMouseSensitivity, yDelta * mouseSensitivity * snipeMouseSensitivity, Space.Self);
             }
             else
             {
-                transform.Rotate((yUpIsUp ? mouseDelta.y : -mouseDelta.y) * mouseSensitivity, mouseDelta.x * mouseSensitivity, 0.0f, Space.Self);
+                player.transform.Rotate((yUpIsUp ? mouseDelta.y : -mouseDelta.y) * mouseSensitivity, mouseDelta.x * mouseSensitivity, 0.0f, Space.Self);
             }
 
             mouseMovement.y = Mathf.Clamp(mouseMovement.y, -90.0f, 90.0f);
         }
-        lastMousePosition = Input.mousePosition;
 
         lastSniping = sniping;
     }
@@ -85,18 +90,18 @@ public class AimingController_Sniper : AimingController
         {
             if(snipingRight)
             {
-                Camera.main.transform.position = player.ship.transform.position + player.ship.transform.TransformVector(snipingOffset);
-                Camera.main.transform.rotation = Quaternion.LookRotation(player.ship.transform.right, player.ship.transform.up);
+                Camera.main.transform.position = transform.position + transform.TransformVector(snipingOffset);
+                Camera.main.transform.rotation = Quaternion.LookRotation(transform.right, transform.up);
             }
             else
             {
-                Camera.main.transform.position = player.ship.transform.position + player.ship.transform.TransformVector(-snipingOffset);
-                Camera.main.transform.rotation = Quaternion.LookRotation(-player.ship.transform.right, player.ship.transform.up);
+                Camera.main.transform.position = transform.position + transform.TransformVector(-snipingOffset);
+                Camera.main.transform.rotation = Quaternion.LookRotation(-transform.right, transform.up);
             }
         }
         else
         {
-            Camera.main.transform.position = player.ship.transform.position;
+            Camera.main.transform.position = transform.position;
             Camera.main.transform.rotation = Quaternion.identity;
             Camera.main.transform.Rotate(5.0f - mouseMovement.y, mouseMovement.x, 0.0f, Space.Self);
             Camera.main.transform.position -= Camera.main.transform.forward * cameraDistance;

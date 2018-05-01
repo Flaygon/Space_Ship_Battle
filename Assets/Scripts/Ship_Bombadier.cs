@@ -48,4 +48,26 @@ public class Ship_Bombadier : Ship {
     {
         transform.Rotate(-rotationPerSecond * Time.deltaTime, 0.0f, 0.0f, Space.Self);
     }
+
+    public override void Fire()
+    {
+        if (Vector3.Dot(transform.right, Camera.main.transform.forward) >= 0)
+        {
+            FireRightBroadside();
+        }
+        else
+        {
+            FireLeftBroadside();
+        }
+    }
+
+    public override void FireLeftBroadside()
+    {
+        firingController.Fire(leftCannonMouths, projectileAsset);
+    }
+
+    public override void FireRightBroadside()
+    {
+        firingController.Fire(rightCannonMouths, projectileAsset);
+    }
 }

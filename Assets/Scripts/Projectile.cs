@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour {
 
     public ParticleSystem explosionAsset;
 
+    public int health;
     public int damage;
 
     public void Initialize()
@@ -31,15 +32,30 @@ public class Projectile : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
-
         if(collision.gameObject.transform.parent)
         {
-            Ship hitEntity = collision.gameObject.transform.parent.GetComponent<Ship>();
-            if (hitEntity)
+            Ship ship = collision.gameObject.transform.parent.GetComponent<Ship>();
+            Drone drone = collision.gameObject.transform.parent.GetComponent<Drone>();
+            if (ship)
             {
-                hitEntity.Damage(damage);
+                ship.Damage(damage);
+                Destroy(gameObject);
             }
+            else if(drone)
+            {
+                drone.Damage(damage);
+
+                health -= drone.health;
+                if(health <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+        else
+        {
+            // Object
+            Destroy(gameObject);
         }
 
         ParticleSystem deathExplosion = Instantiate(explosionAsset);

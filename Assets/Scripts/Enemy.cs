@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
     {
         if (ship == null)
         {
+            manager.enemies.Remove(this);
             Destroy(gameObject);
             return;
         }
