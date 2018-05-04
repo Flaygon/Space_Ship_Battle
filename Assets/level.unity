@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1410365375}
-  playerShipAsset: {fileID: 114574737854493326, guid: a1c8c6db8ab6b4a4aa3b20eda6062b32,
+  playerShipAsset: {fileID: 114043959977417728, guid: 2e045275c4daa4948a6a6bdb374d762d,
     type: 2}
   enemyAsset: {fileID: 114994387505441166, guid: aa11788e463fab74993286a158aa790c,
     type: 2}
