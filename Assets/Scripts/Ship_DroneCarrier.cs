@@ -35,7 +35,7 @@ public class Ship_DroneCarrier : Ship {
 
     public override void SpeedUp()
     {
-        velocity = Mathf.Min(maxVelocity, velocity + velocityPerSecond * 2 * Time.deltaTime);
+        velocity = Mathf.Min(maxVelocity, velocity + velocityPerSecond * Time.deltaTime);
     }
 
     public override void SlowDown()

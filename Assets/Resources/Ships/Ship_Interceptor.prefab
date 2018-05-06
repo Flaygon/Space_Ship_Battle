@@ -530,7 +530,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1728805889415326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -161.1, y: 0, z: 93.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4605987847181508}
@@ -951,3 +951,11 @@ MonoBehaviour:
   firingController: {fileID: 114318084990475640}
   info: {fileID: 11400000, guid: 6b1eac110e6378b479adce08dc37b2ca, type: 2}
   player: {fileID: 0}
+  minScrapValue: 1
+  maxScrapValue: 2
+  minScrapOnDestruction: 2
+  maxScrapOnDestruction: 4
+  scrapAssets:
+  - {fileID: 114995317601539884, guid: 7080fb14878344743baa4436d05db358, type: 2}
+  - {fileID: 114305974911188726, guid: 7d73d9a7d56f267469e57d6eec0b0a0f, type: 2}
+  - {fileID: 114251534821472160, guid: 8c6ad0fd9bf55c14da23a7ba5b56e660, type: 2}

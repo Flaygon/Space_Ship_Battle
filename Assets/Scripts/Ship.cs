@@ -27,6 +27,14 @@ public abstract class Ship : MonoBehaviour {
 
     public Player player;
 
+    public int minScrapValue;
+    public int maxScrapValue;
+
+    public int minScrapOnDestruction;
+    public int maxScrapOnDestruction;
+
+    public List<Scrap> scrapAssets;
+
     protected virtual void Update()
     {
         transform.position += transform.forward * velocity * Time.deltaTime;
@@ -58,6 +66,12 @@ public abstract class Ship : MonoBehaviour {
 
             ParticleSystem deathExplosion = Instantiate(explosionAsset);
             deathExplosion.transform.position = transform.position;
+
+            int scraps = Random.Range(minScrapOnDestruction, maxScrapOnDestruction + 1);
+            for(int iScrap = 0; iScrap < scraps; ++iScrap)
+            {
+                Instantiate(scrapAssets[Random.Range(0, scrapAssets.Count)], transform.position, transform.rotation);
+            }
         }
     }
 }
