@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship_Interceptor : Ship {
+public class Ship_Titan : Ship {
+
+    public FiringController secondaryFiringController;
+    public Projectile secondaryProjectileAsset;
 
     protected override void Update()
     {
@@ -68,6 +71,6 @@ public class Ship_Interceptor : Ship {
 
     public override void FireRightBroadside()
     {
-        firingController.Fire(rightCannonMouths, projectileAsset);
+        secondaryFiringController.Fire(rightCannonMouths, secondaryProjectileAsset);
     }
 }

@@ -252,11 +252,14 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Scrap.cs" />
     <Compile Include="Assets\Scripts\Ship.cs" />
     <Compile Include="Assets\Scripts\Ship_Bombadier.cs" />
+    <Compile Include="Assets\Scripts\Ship_Crasher.cs" />
     <Compile Include="Assets\Scripts\Ship_DroneCarrier.cs" />
     <Compile Include="Assets\Scripts\Ship_Interceptor.cs" />
     <Compile Include="Assets\Scripts\Ship_PlanetaryCannon.cs" />
+    <Compile Include="Assets\Scripts\Ship_Titan.cs" />
     <Compile Include="Assets\Scripts\ShipInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

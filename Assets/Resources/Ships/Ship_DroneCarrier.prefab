@@ -838,8 +838,16 @@ MonoBehaviour:
     type: 2}
   invincible: 0
   firingController: {fileID: 0}
-  info: {fileID: 11400000, guid: 6b1eac110e6378b479adce08dc37b2ca, type: 2}
+  info: {fileID: 11400000, guid: c7ca41823227e744f94ceeb58e01b217, type: 2}
   player: {fileID: 0}
+  minScrapValue: 1
+  maxScrapValue: 2
+  minScrapOnDestruction: 2
+  maxScrapOnDestruction: 4
+  scrapAssets:
+  - {fileID: 114995317601539884, guid: 7080fb14878344743baa4436d05db358, type: 2}
+  - {fileID: 114305974911188726, guid: 7d73d9a7d56f267469e57d6eec0b0a0f, type: 2}
+  - {fileID: 114251534821472160, guid: 8c6ad0fd9bf55c14da23a7ba5b56e660, type: 2}
   offensiveDrones: {fileID: 114874476438233746}
   defensiveDrones: {fileID: 114496818288010378}
 --- !u!114 &114736637009963642

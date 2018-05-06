@@ -170,7 +170,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1410365375}
-  playerShipAsset: {fileID: 114043959977417728, guid: 2e045275c4daa4948a6a6bdb374d762d,
+  playerShipAsset: {fileID: 114574737854493326, guid: 0a38d70dbedc32e47808342ef229e1f2,
     type: 2}
   enemyAsset: {fileID: 114994387505441166, guid: aa11788e463fab74993286a158aa790c,
     type: 2}
