@@ -73,3 +73,23 @@ C: Tilt backward
 ?Z: Tilt Right? Maybe not available for this ship type
 
 Beginner difficulty: 1/5
+
+## Crasher
+Fast and nimble. Has no cannons and thrives only on the scrap left by broken ships.
+Clever use of sneak attacks and scrap management is key to this little monster.
+The more scrap that it eats, the larger it becomes(to a certain degree).
+Becomes an easier target when grown but also that much deadlier.
+Crash into other ships to deal damage. The larger the more damage.
+
+### Controls
+Space: Super speed for sneak attach shenanigans
+W: Speed up
+S: Slow down
+A: Turn left
+D: Turn right
+E: Tilt forward
+C: Tilt backward
+?Q: Tilt left? Maybe not available for this ship type
+?Z: Tilt Right? Maybe not available for this ship type
+
+Beginner difficulty: 5/5
